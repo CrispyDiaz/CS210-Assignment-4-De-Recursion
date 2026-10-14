@@ -7,6 +7,8 @@ using namespace std;
     CS 210 / Scovil
     Assignment 4 - De-Recursion
 */
+
+//This asks if the user wants to keep continuing calculations for factorials
 bool askToContinue() {
     char userInput;
     while (true) {
@@ -27,15 +29,15 @@ bool askToContinue() {
         }
     }
 }
-
+//Takes User Input
 int userInput() {
     int userNum;
     bool validInput = false;
     do {
-        cout << "Please enter an integer: ";
+        cout << "Please enter an integer (0-20): ";
         cin >> userNum;
-        if (cin.fail() == true) {
-            cin.clear();
+        if (cin.fail()) {
+            cin.clear(); // Clears cin input if it fails
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             validInput = false;
             cout << "Invalid input. Try again." << endl;
@@ -54,6 +56,7 @@ void printName() {
     cout << "ID : 134646574" << endl;
     cout << "CS210 - Assignment 4" << endl;
 }
+//I used unsigned long long to open up the range for the input becasue
 class Factorial {
 public:
     unsigned long long calculate(int num) {
