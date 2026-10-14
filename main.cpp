@@ -8,7 +8,7 @@ using namespace std;
     Assignment 4 - De-Recursion
 */
 
-//This asks if the user wants to keep continuing calculations for factorials
+// Asks whether to run another calculation. Accepts Y/y/N/n and re-prompts otherwise.
 bool askToContinue() {
     char userInput;
     while (true) {
@@ -29,7 +29,9 @@ bool askToContinue() {
         }
     }
 }
-//Takes User Input
+// Prompts until the user enters an integer from 0 to 20.
+// Clears the error flag and discards bad input so a non-numeric entry
+// (like "abc") doesn't cause an infinite loop
 int userInput() {
     int userNum;
     bool validInput = false;
@@ -37,8 +39,8 @@ int userInput() {
         cout << "Please enter an integer (0-20): ";
         cin >> userNum;
         if (cin.fail()) {
-            cin.clear(); // Clears cin input if it fails
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin.clear(); // reset the error flag so cin can be used again
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard the bad input
             validInput = false;
             cout << "Invalid input. Try again." << endl;
         }
@@ -56,7 +58,10 @@ void printName() {
     cout << "ID : 134646574" << endl;
     cout << "CS210 - Assignment 4" << endl;
 }
-//I used unsigned long long to open up the range for the input becasue
+// Using unsigned long long because 20!
+// (about 2.4 x 10^18) overflows a 32-bit int.
+// 20 is the largest input whose factorial
+// still fits in an unsigned long long.
 class Factorial {
 public:
     unsigned long long calculate(int num) {
@@ -76,6 +81,8 @@ public:
 int main() {
     printName();
     Factorial f;
+    // Main loop: get a number,
+    // compute its factorial, then ask whether to repeat
     while (true) {
         int userSelection = userInput();
         unsigned long long result = f.calculate(userSelection);
