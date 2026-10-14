@@ -25,7 +25,7 @@ bool askToContinue() {
         }
         else {
             cout << "Invalid input. Try again." << endl;
-
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
     }
 }
@@ -56,7 +56,7 @@ int userInput() {
 void printName() {
     cout << "Anthony Diaz" << endl;
     cout << "ID : 134646574" << endl;
-    cout << "CS210 - Assignment 4" << endl;
+    cout << "CS 210 - Assignment 4" << endl;
 }
 // Using unsigned long long because 20!
 // (about 2.4 x 10^18) overflows a 32-bit int.
